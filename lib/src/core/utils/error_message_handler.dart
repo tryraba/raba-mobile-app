@@ -1,0 +1,33 @@
+import 'package:dio/dio.dart';
+import 'package:raba_mobile/src/core/error/exceptions.dart';
+
+extension ErrorHandler on Exception {
+  String? get errorMessage {
+    try {
+      if (this is DioException) {
+        final error = this as DioException;
+        late final String? backendMessage;
+        if (error.response?.data is Map) {
+          backendMessage =
+              (error.response?.data as Map?)?['message'] as String? ?? '';
+        } else if (error.response?.data is String) {
+          backendMessage = error.response?.data as String;
+        } else {
+          backendMessage = null;
+        }
+
+        final message =
+            backendMessage ?? error.message ?? 'something went wrong';
+        return message.toLowerCase().contains('failed host lookup')
+            ? 'Please check your internet connection and try again'
+            : message;
+      } else if (this is ServerException) {
+        return (this as ServerException).message;
+      } else {
+        return null;
+      }
+    } on Exception catch (_) {
+      return null;
+    }
+  }
+}
