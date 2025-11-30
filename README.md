@@ -1,16 +1,61 @@
-# raba_mobile
+## Folder Structure :open_file_folder:
 
-A new Flutter project.
+```
+lib/
+├── app/
+├── core/
+│   ├── errors/
+│   ├── network/
+│   └── utils/
+├── di/
+├── features/
+│   ├── feature0/
+│   │   ├── data/
+│   │   │   ├── client/
+│   │   │   ├── data_sources/
+│   │   │   ├── models/
+│   │   │   └── repositories/
+│   │   ├── domain/
+│   │   │   ├── entities/
+│   │   │   ├── repositories/
+│   │   │   └── use_cases/
+│   │   └── presentation/
+│   │       ├── blocs/
+│   │       ├── pages/
+│   │       └── widgets/
+├── services/
+├── shared/
+```
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
+## 📦 **Dependencies**
 
-A few resources to get you started if this is your first Flutter project:
+-   **`bloc_concurrency`** – Optimizes event handling in BLoC by controlling how events are processed concurrently or sequentially.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+-   **`cached_network_image`** – Efficiently loads and caches network images to reduce redundant network calls and improve performance.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+-   **`dio`** – A powerful HTTP client for making API requests with advanced features like interceptors and cancellation.
+
+-   **`equatable`** – Simplifies value comparison in Dart classes, especially for state management.
+
+-   **`flutter`** – The core Flutter SDK used to build beautiful, cross-platform apps from a single codebase.
+
+-   **`flutter_bloc`** – Enables implementation of the BLoC (Business Logic Component) pattern for predictable state management.
+
+-   **`flutter_localizations`** – Adds built-in support for localizing your Flutter app into multiple languages.
+
+-   **`freezed_annotation`** – Used to generate immutable data classes with copy, equality, and JSON methods via `freezed`.
+
+-   **`freezed`** – Code generation tool for creating unions/sealed classes and immutable models in Dart.
+
+-   **`get_it`** – A lightweight service locator for dependency injection to manage app-wide objects easily.
+
+-   **`intl`** – Supports internationalization, localization, and date/number formatting in different locales.
+
+-   **`json_annotation`** – Adds annotations used with code generators like `json_serializable` for model serialization.
+
+-   **`logger`** – A customizable logging utility to help you debug by printing logs in a structured way.
+
+-   **`retrofit`** – A type-safe HTTP client generator for Dart inspired by Retrofit in Android/Kotlin.
+
+-   **`rxdart`** – Adds functional and reactive extensions to Dart streams (in this case, used to implement debouncers.

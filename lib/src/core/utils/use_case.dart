@@ -8,8 +8,8 @@ import 'package:raba_mobile/src/core/utils/either.dart';
 /// UseCase is called with Failure or some type of data representation
 ///
 ///
-abstract class UseCase<Type, Params> {
-  Future<Either<Failure, Type>> call(Params params);
+abstract class UseCase<DataType, Params> {
+  Future<Either<Failure, DataType>> call(Params params);
 }
 
 ///
