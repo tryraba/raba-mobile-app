@@ -41,8 +41,16 @@ Future<void> bootstrap({
   await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
 
   await initLocator();
-  // ! For envs
-  await dotenv.load(fileName: environment.envFileName);
+  // Load environment file if present. If missing, log and continue so
+  // development runs don't crash when env files are not checked into VCS.
+  try {
+    await dotenv.load(fileName: environment.envFileName);
+  } catch (e, st) {
+    // flutter_dotenv throws when the file isn't found; don't let that
+    // terminate the app. Log so developers can create the file if needed.
+    log('Could not load env file `${environment.envFileName}`: $e',
+        stackTrace: st);
+  }
   await Hive.initFlutter();
   await locator<LocalStorageService>().initDB();
   runApp(await builder());

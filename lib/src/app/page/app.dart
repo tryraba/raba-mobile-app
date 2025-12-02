@@ -5,7 +5,9 @@ import 'package:raba_mobile/src/core/themes/app_theme.dart';
 import 'package:raba_mobile/src/shared/widgets/dismiss_keyboard.dart';
 
 class App extends StatelessWidget {
-  App({super.key});
+  App({super.key, this.initialPage});
+
+  final Widget? initialPage;
 
   final appRouter = AppRouter();
 
@@ -14,13 +16,23 @@ class App extends StatelessWidget {
     return DismissKeyboard(
       child: ScreenUtilInit(
         designSize: const Size(375, 812),
-        builder: (context, _) => MaterialApp.router(
-          theme: AppTheme.lightTheme,
-          debugShowCheckedModeBanner: false,
-          // localizationsDelegates: AppLocalizations.localizationsDelegates,
-          // supportedLocales: AppLocalizations.supportedLocales,
-          routerConfig: appRouter.config(),
-        ),
+        builder: (context, _) {
+          if (initialPage != null) {
+            return MaterialApp(
+              home: initialPage,
+              theme: AppTheme.lightTheme,
+              debugShowCheckedModeBanner: false,
+            );
+          }
+
+          return MaterialApp.router(
+            theme: AppTheme.lightTheme,
+            debugShowCheckedModeBanner: false,
+            // localizationsDelegates: AppLocalizations.localizationsDelegates,
+            // supportedLocales: AppLocalizations.supportedLocales,
+            routerConfig: appRouter.config(),
+          );
+        },
       ),
     );
   }
