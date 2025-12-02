@@ -1,0 +1,25 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "raba-mobile-app (development)",
+            "request": "launch",
+            "type": "dart",
+            "program": "lib/src/main_development.dart"
+        },
+        {
+            "name": "raba-mobile-app (profile mode)",
+            "request": "launch",
+            "type": "dart",
+            "program": "lib/src/main_development.dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "raba-mobile-app (release mode)",
+            "request": "launch",
+            "type": "dart",
+            "program": "lib/src/main_production.dart",
+            "flutterMode": "release"
+        }
+    ]
+}
